@@ -15,6 +15,7 @@
  */
 package com.alibaba.csp.sentinel.slots.system;
 
+import com.alibaba.csp.sentinel.annotation.Order;
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.node.DefaultNode;
 import com.alibaba.csp.sentinel.slotchain.AbstractLinkedProcessorSlot;
@@ -27,6 +28,7 @@ import com.alibaba.csp.sentinel.slotchain.ResourceWrapper;
  * @author jialiang.linjl
  * @author leyou
  */
+@Order(-4000)
 public class SystemSlot extends AbstractLinkedProcessorSlot<DefaultNode> {
 
     @Override

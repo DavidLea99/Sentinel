@@ -18,6 +18,7 @@ package com.alibaba.csp.sentinel.slots.nodeselector;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.alibaba.csp.sentinel.annotation.Order;
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.node.ClusterNode;
@@ -122,6 +123,7 @@ import com.alibaba.csp.sentinel.slotchain.ResourceWrapper;
  * @see EntranceNode
  * @see ContextUtil
  */
+@Order(-9000)
 public class NodeSelectorSlot extends AbstractLinkedProcessorSlot<Object> {
 
     /**

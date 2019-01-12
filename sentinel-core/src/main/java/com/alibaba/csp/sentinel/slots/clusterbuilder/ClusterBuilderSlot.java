@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.alibaba.csp.sentinel.EntryType;
+import com.alibaba.csp.sentinel.annotation.Order;
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.node.ClusterNode;
@@ -44,6 +45,7 @@ import com.alibaba.csp.sentinel.slotchain.StringResourceWrapper;
  *
  * @author jialiang.linjl
  */
+@Order(-8000)
 public class ClusterBuilderSlot extends AbstractLinkedProcessorSlot<DefaultNode> {
 
     /**

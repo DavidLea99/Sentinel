@@ -18,6 +18,7 @@ package com.alibaba.csp.sentinel.slots.block.flow;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.csp.sentinel.annotation.Order;
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.node.DefaultNode;
 import com.alibaba.csp.sentinel.slotchain.AbstractLinkedProcessorSlot;
@@ -133,6 +134,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
  * @author jialiang.linjl
  * @author Eric Zhao
  */
+@Order(-2000)
 public class FlowSlot extends AbstractLinkedProcessorSlot<DefaultNode> {
 
     @Override

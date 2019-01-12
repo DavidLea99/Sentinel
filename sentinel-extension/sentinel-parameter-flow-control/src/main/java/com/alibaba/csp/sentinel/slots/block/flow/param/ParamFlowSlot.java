@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.alibaba.csp.sentinel.EntryType;
+import com.alibaba.csp.sentinel.annotation.Order;
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.log.RecordLog;
 import com.alibaba.csp.sentinel.node.DefaultNode;
@@ -36,6 +37,7 @@ import com.alibaba.csp.sentinel.util.StringUtil;
  * @author Eric Zhao
  * @since 0.2.0
  */
+@Order(-5000)
 public class ParamFlowSlot extends AbstractLinkedProcessorSlot<DefaultNode> {
 
     private static final Map<ResourceWrapper, ParameterMetric> metricsMap

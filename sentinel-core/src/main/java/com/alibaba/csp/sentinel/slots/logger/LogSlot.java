@@ -15,6 +15,7 @@
  */
 package com.alibaba.csp.sentinel.slots.logger;
 
+import com.alibaba.csp.sentinel.annotation.Order;
 import com.alibaba.csp.sentinel.log.RecordLog;
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.node.DefaultNode;
@@ -26,6 +27,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
  * A {@link com.alibaba.csp.sentinel.slotchain.ProcessorSlot} that is response for logging block exceptions
  * to provide concrete logs for troubleshooting.
  */
+@Order(-7000)
 public class LogSlot extends AbstractLinkedProcessorSlot<DefaultNode> {
 
     @Override
