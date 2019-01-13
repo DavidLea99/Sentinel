@@ -50,11 +50,6 @@ public final class SpiLoader {
             SERVICE_LOADER_MAP.put(key, serviceLoader);
         }
 
-        for (T t : serviceLoader) {
-            System.out.println(t);
-        }
-
-
         Iterator<T> iterator = serviceLoader.iterator();
         if (iterator.hasNext()) {
             return iterator.next();
@@ -81,7 +76,7 @@ public final class SpiLoader {
 
         int instanceSize = 0;
         // create instanceOrderMap, key is T and value is the order of the T component
-        Map<T, Integer> instanceOrderMap = new HashMap<T, Integer>(8);// for total 8 default slots
+        Map<T, Integer> instanceOrderMap = new HashMap<T, Integer>(16); // for total 9 default slot
         for (T instance : loader) {
             instanceSize++;
             int order = Order.LOWEST_PRECEDENCE;// if no @Order annotation, use lowest order as default

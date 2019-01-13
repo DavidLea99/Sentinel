@@ -1,6 +1,8 @@
 package com.alibaba.csp.sentinel.util;
 
 import com.alibaba.csp.sentinel.slotchain.ProcessorSlot;
+import com.alibaba.csp.sentinel.slotchain.SlotChainBuilder;
+import com.alibaba.csp.sentinel.slots.DefaultSlotChainBuilder;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthoritySlot;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeSlot;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowSlot;
@@ -26,11 +28,11 @@ public class SpiLoaderTest {
     @Test
     public void testLoadFirstInstance() {
         ProcessorSlot processorSlot = SpiLoader.loadFirstInstance(ProcessorSlot.class);
-
         assertNotNull(processorSlot);
 
-        // maybe NodeSelectorSlot won't be first, but now it's okay
-        assertTrue(processorSlot instanceof NodeSelectorSlot);
+        SlotChainBuilder slotChainBuilder = SpiLoader.loadFirstInstance(SlotChainBuilder.class);
+        assertNotNull(slotChainBuilder);
+        assertTrue(slotChainBuilder instanceof DefaultSlotChainBuilder);
     }
 
     @Test
@@ -39,7 +41,7 @@ public class SpiLoaderTest {
 
         assertNotNull(processorSlots);
 
-        // 8 default slots
+        // total 8 default slot in sentinel-core
         assertEquals(8, processorSlots.size());
 
         // verify the order of slots
