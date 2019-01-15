@@ -29,7 +29,7 @@ public class DefaultSlotChainBuilderTest {
 
         assertNotNull(slotChain);
 
-        // verify the order of slots
+        // verify the order of slot
         AbstractLinkedProcessorSlot<?> next = slotChain.getNext();
         assertTrue(next instanceof NodeSelectorSlot);
 
