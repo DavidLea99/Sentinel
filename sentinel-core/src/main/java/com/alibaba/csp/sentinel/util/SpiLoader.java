@@ -37,6 +37,7 @@ public final class SpiLoader {
 
     /**
      * Load the first instance by SPI
+     * If no instance, return null
      * @param clazz the interface or abstract class representing the service
      * @param <T> the class of the service type
      * @return the first instance in service loader
@@ -62,6 +63,7 @@ public final class SpiLoader {
      * Load the ordered instance list by SPI
      * The order are sorted by {@link Order} annotation
      * If no @Order annotation in the class of instance, use lowest order {@link Order#LOWEST_PRECEDENCE} as default
+     * If no instance, return null
      *
      * @param clazz the interface or abstract class representing the service
      * @param <T> <T> the class of the service type
@@ -86,7 +88,7 @@ public final class SpiLoader {
             instanceOrderMap.put(instance, order);
         }
 
-        // if only have 1 instance, no need to sort the order, just return a new ArrayList
+        // if only has 1 instance, no need to sort the order, just return a new ArrayList which contains the instance
         if (instanceSize == 1) {
             return new ArrayList<T>(instanceOrderMap.keySet());
         }
@@ -100,7 +102,7 @@ public final class SpiLoader {
             }
         });
 
-        // now the tmpList is sorted, iterate tmpList and add the entry's key to create the orderedInstanceList
+        // now the tmpList is ordered, iterate tmpList and add the entry's key to create the orderedInstanceList
         List<T> orderedInstanceList = new ArrayList<T>(instanceSize);
         for (Map.Entry<T, Integer> entry : tmpList) {
             orderedInstanceList.add(entry.getKey());

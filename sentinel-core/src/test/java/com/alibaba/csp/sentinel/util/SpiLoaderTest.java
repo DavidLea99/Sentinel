@@ -44,7 +44,7 @@ public class SpiLoaderTest {
         // total 8 default slot in sentinel-core
         assertEquals(8, processorSlots.size());
 
-        // verify the order of slots
+        // verify the order of slot
         int index = 0;
         assertTrue(processorSlots.get(index++) instanceof NodeSelectorSlot);
         assertTrue(processorSlots.get(index++) instanceof ClusterBuilderSlot);
@@ -55,7 +55,7 @@ public class SpiLoaderTest {
         assertTrue(processorSlots.get(index++) instanceof FlowSlot);
         assertTrue(processorSlots.get(index++) instanceof DegradeSlot);
 
-        // verify the instances are different when loadOrderedInstanceList second time
+        // verify each call returns different instances
         List<ProcessorSlot> processorSlots2 = SpiLoader.loadOrderedInstanceList(ProcessorSlot.class);
         assertNotSame(processorSlots, processorSlots2);
         assertEquals(processorSlots.size(), processorSlots2.size());
